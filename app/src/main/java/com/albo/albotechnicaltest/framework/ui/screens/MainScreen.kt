@@ -57,6 +57,10 @@ fun MainScreen(viewModel: MainScreenViewModel = koinViewModel()) {
                 }
                 return@Scaffold
             }
+            if (nonNullState.isLoading.not() && nonNullState.pokemonList.isEmpty()) {
+                Text(text = "No hay Datos")
+                return@Scaffold
+            }
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()

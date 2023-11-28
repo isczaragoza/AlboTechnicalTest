@@ -15,7 +15,7 @@ class MainScreenViewModel(private val fetchPokemonListUseCase: FetchPokemonListU
     ViewModel() {
 
     private val _state: MutableLiveData<MainScreenState> = MutableLiveData<MainScreenState>(
-        MainScreenState(isLoading = false, pokemonListFetch = false, emptyList())
+        MainScreenState(isLoading = false, pokemonListFetch = false)
     )
     val state: LiveData<MainScreenState> = _state
     private var fetchPokemonListJob: Job? = null
@@ -29,7 +29,7 @@ class MainScreenViewModel(private val fetchPokemonListUseCase: FetchPokemonListU
                 val pokemonList = fetchPokemonListUseCase()
                 _state.value = state.value?.copy(isLoading = false, pokemonList = pokemonList)
             } catch (e: Exception) {
-                val a = e
+                _state.value = state.value?.copy(isLoading = false)
             }
         }
     }
