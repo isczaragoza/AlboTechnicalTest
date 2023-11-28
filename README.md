@@ -78,8 +78,43 @@ poder elegir la libreria que mas se adapte al desarrollo.
 
 Preguntas de Resolución de Problemas:
 
+Para las siguientes preguntas me gustaría primero presentar algunos puntos que considero clave para la
+correcta resolución de problemas.
+
+- Es importante realizar un análisis del impacto negativo que genera en la aplicación este problema.
+- Antes de buscar una solución debemos analizar el porqué se realizó el desarrollo de la App de esa manera,
+  si aún se encuentra colaborando con el equipo el desarrollador se deben preguntar cuales requerimientos
+  se buscanban satisfacer y por que se realizó de esa manera el fragmento de código, si ya no se encuentra
+  el colaborador, se debe realizar un análisis del código para determinar la respuesta a las preguntas anteriores.
+- Una vez solucionadas las respuestas relacionas al código y el problema, debemos determinar si existe alguna
+  limitación técnica por la que se realizó el desarrollo de esa manera, si no hay una limitación y solo
+  es deuda técnica entonces comenzamos a explorar posibles soluciones.
+- Dentro de las posibles soluciones debemos implementar la que mas se adapte a la aplicación y a los requerimientos
+  del producto.
+- Por último debemos desarrollar una estrategía para la implementación de la solución, considerando el riesgo de
+  introducir bugs involuntarios, pruebas, refactorización de código, etc.
+
+- El IDE de Android brinda la herramienta Profiler que ayuda a identificar y analizar este tipo de problemas
+
+Una vez expuestos estos puntos la respuesta a cada pregunta es la solución concreta del problema.
+
 1.- Dada una situación donde una aplicación Android se enfrenta a problemas de
 memoria debido al manejo incorrecto de contextos, ¿cómo lo solucionaría?
+- Revisar la capa en la que se tiene el problema con los contextos, si son capas en las que no debería haber referencias
+al contexto como por ejemplo la capa de datos, entonces deberíamos removerlo de la capa y refactorizar el código para
+hubicar correctamente el uso del contexto.
+- Si es una capa a la que si le corresponde el uso del contexto como por ejemplo la capa de Framework en Vistas Android
+entonces habría que validar que se utilice el contexto correcto, remover referencias duras al contexto, aplicar el 
+correcto uso y desuso del contexto a través del ciclo de vida de la Activity o Fragment.
 
 2.- Si una aplicación experimenta retardos debido a operaciones de red en el hilo
 principal, ¿cómo optimizaría el código?
+Es importante revisar que tipo de arquitectura se está utilizando.
+Analizar en que capa se están realizando las operaciones de red, no podemos simplemente implementar un nuevo Thread o Corrutinas
+porque podemos ocasionar carreras de datos y estados inesperados de la aplicación.
+Aunque la aplicación no esté usando estrictamente una arquitectura de capas, es posible separar responsabilidades y limpiar las 
+vistas que corren en el hilo principal (subproceso principal) removiendo lógica de negocio.
+Una vez separadas las responsabilidades, las operaciones de red se pueden poner en métodos suspedidos y llamarlos desde una
+corrutina con un Contexto de tipo Dispatcher.IO que brinda la gestion necesaria fuera del hilo principal, la corrutina puede ser
+generada de manera manual o utilizando el viewModelScope (que hace uso del ciclo de vida del ViewModel), si se utiliza la implementación de MVVM.
+
