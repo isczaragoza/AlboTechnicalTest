@@ -109,12 +109,12 @@ correcto uso y desuso del contexto a través del ciclo de vida de la Activity o 
 
 2.- Si una aplicación experimenta retardos debido a operaciones de red en el hilo
 principal, ¿cómo optimizaría el código?
-Es importante revisar que tipo de arquitectura se está utilizando.
-Analizar en que capa se están realizando las operaciones de red, no podemos simplemente implementar un nuevo Thread o Corrutinas
-porque podemos ocasionar carreras de datos y estados inesperados de la aplicación.
-Aunque la aplicación no esté usando estrictamente una arquitectura de capas, es posible separar responsabilidades y limpiar las 
-vistas que corren en el hilo principal (subproceso principal) removiendo lógica de negocio.
-Una vez separadas las responsabilidades, las operaciones de red se pueden poner en métodos suspedidos y llamarlos desde una
-corrutina con un Contexto de tipo Dispatcher.IO que brinda la gestion necesaria fuera del hilo principal, la corrutina puede ser
-generada de manera manual o utilizando el viewModelScope (que hace uso del ciclo de vida del ViewModel), si se utiliza la implementación de MVVM.
+- Es importante revisar que tipo de arquitectura se está utilizando.
+  Analizar en que capa se están realizando las operaciones de red, no podemos simplemente implementar un nuevo Thread o Corrutinas
+  porque podemos ocasionar carreras de datos y estados inesperados de la aplicación.
+- Aunque la aplicación no esté usando estrictamente una arquitectura de capas, es posible separar responsabilidades y limpiar las 
+ vistas que corren en el hilo principal (subproceso principal) removiendo lógica de negocio.
+ Una vez separadas las responsabilidades, las operaciones de red se pueden poner en métodos suspedidos y llamarlos desde una
+ corrutina con un Contexto de tipo Dispatcher.IO que brinda la gestion necesaria fuera del hilo principal, la corrutina puede ser
+ generada de manera manual o utilizando el viewModelScope (que hace uso del ciclo de vida del ViewModel), si se utiliza la implementación de MVVM.
 
