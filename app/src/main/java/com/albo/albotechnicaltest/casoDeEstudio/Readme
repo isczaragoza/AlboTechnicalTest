@@ -1,0 +1,44 @@
+Caso de Estudio:
+● Presente un escenario específico (por ejemplo, una aplicación de lista de tareas) y
+pida al candidato que esboce cómo estructurarían la aplicación utilizando MVVM,
+LiveData, Room, Koin y Retrofit.
+● Pueden incluir diagramas de arquitectura y fragmentos de código para explicar su
+enfoque.
+
+El paquete "casoDeEstudio" se colocó dentro de "com.albo.albotechnicalteest" por practicidad,
+pero no corresponde y es independiente a las 3 capas en las que se divide la App principal.
+(La app principal responde a la sección de Ejercicios Prácticos con Código)
+El paquete casoDeEstudio incluye las respuestas al caso de estudio propuesto en esta prueba técnica.
+
+- Para la aplicación de Lista De Tareas voy a aplicar Clean Architecture, dividiendola en 3 capas
+  principales (Framework, Data, Dominio).
+
+- Se va a aplicar el patrón MVVM
+- Se utilizarán las siguientes librerias, LiveData, Room, Koin y Retrofit.
+
+Breve explicación de las capas que aplicaremos de Clean Architecture.
+
+Capa de Framework:
+- Contiene lo relacionado al Framework de Android, Framework de Koin, librerías, implementación de
+  vistas. Detalles de la implementación.
+
+Capa de Datos:
+- Es la capa que brinda acceso a los datos ya seán remotos o locales (base de datos).
+  Repositorios, fuentes de datos.
+
+Capa de Dominio:
+- Core de la aplicación, corresponde a los casos de uso, modelos.
+
+División del patrón MVVM en Clean Architecture
+
+- Model corresponde a la capa de Dominio
+- View corresponde a la capa de framework (Framework de Android UI)
+- ViewModel corresponde a la capa de Framework ya que implementa el uso de la clase ViewModel y esta
+  corresponde al Framework de Android.
+
+/**Algunos autores agregan una capa intermedia llamada UI entre Framework y Data. Contiene solo la
+implementación de Vistas y ViewModels, como una forma de dividir un poco mas el proyecto, personalmente
+no considero que en este caso de estudio sea necesario.*/
+
+Por ultimo, en el paquete casoDeEstudio se encuentran los ejemplos de directorios y los ejemplos de
+código solicitados. No es una aplicación completa, es un "borrador"

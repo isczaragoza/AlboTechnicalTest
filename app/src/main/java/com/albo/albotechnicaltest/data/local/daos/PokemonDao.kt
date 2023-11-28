@@ -15,6 +15,6 @@ interface PokemonDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPokemonList(listPokemonResult: List<PokemonEntity>)
 
-    @Query("SELECT * FROM PokemonEntity LIMIT 100")
+    @Query("SELECT * FROM PokemonEntity LIMIT 150")
     suspend fun getPokemonList(): List<PokemonEntity>
 }

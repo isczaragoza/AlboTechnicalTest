@@ -33,7 +33,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(viewModel: MainScreenViewModel = koinViewModel()) {
+fun MainScreen(viewModel: MainScreenViewModel = koinViewModel()/**Koin*/) {
     val state by viewModel.state.observeAsState()
     val nonNullState = state!!
     Scaffold { innerPadding ->

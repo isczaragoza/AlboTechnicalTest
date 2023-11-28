@@ -28,6 +28,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.albo.albotechnicaltest.ui.theme.AlboTechnicalTestTheme
 
+/**
+ * Ejemplo de UI:
+ * ● Demuestra tus habilidades de UI desarrollando el siguiente componente. Es una
+ * barra de progreso que puede estar vacía, en cualquier punto intermedio y totalmente
+ * llena.
+ * */
 @Composable
 fun CustomProgressIndicatorExample(tarjetazos: Int) {
     val percentage = if (tarjetazos <= 25) {
@@ -149,6 +155,7 @@ fun CustomProgressIndicatorExample(tarjetazos: Int) {
 @Preview(showBackground = true)
 @Composable
 private fun CustomProgressIndicatorExamplePreview() {
+    /**Ejemplo de la barra dinámica según el valor que se le proporcione*/
     AlboTechnicalTestTheme {
         Column {
             CustomProgressIndicatorExample(0)

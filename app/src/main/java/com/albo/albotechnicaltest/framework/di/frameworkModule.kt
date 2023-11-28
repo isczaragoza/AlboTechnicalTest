@@ -22,5 +22,5 @@ val frameworkModule = module {
         ).fallbackToDestructiveMigration().build()
     }
     //View Models
-    viewModelOf(::MainScreenViewModel)
+    viewModelOf(::MainScreenViewModel) /**Creación del ViewModel, Koin gestiona las dependecias del ViewModel*/
 }

@@ -19,7 +19,6 @@ class PokemonRepository(
         const val UNKNOWN_ERROR = "Unknown_Error"
         const val EMPTY_DATA = "Empty_Data"
     }
-
     override suspend fun requestPokemonList(): List<Pokemon> {
         try {
             val response = remoteDataSource.requestPokemonList()

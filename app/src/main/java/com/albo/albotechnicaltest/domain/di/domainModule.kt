@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val domainModule = module {
     //Use Cases
-    factoryOf(::FetchPokemonListUseCase)
+    factoryOf(::FetchPokemonListUseCase) /**Esta dependencia la requiere el ViewModel*/
 }
